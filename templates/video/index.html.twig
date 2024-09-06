@@ -1,0 +1,208 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des vidéos{% endblock %}
+
+{% block body %}
+    <div class="container mt-4">
+        <div class="text-center">
+            <h2 style="color: black;" class="animate__animated animate__rubberBand animate__backInRight">Bienvenue dans Vidéo Center</h2>
+            <h6 style="color: black;" class="animate__animated animate__rubberBand animate__fadeInDownBig">
+                Sur ce site, vous trouverez plusieurs vidéos intéressantes.<br>
+                Pour certaines vidéos, il faudra être enregistré pour les voir.
+            </h6>
+
+            {# Affiche les boutons d'inscription et de connexion si l'utilisateur n'est pas connecté #}
+            {% if not app.user %}
+                <div class="mt-4">
+                    <a class="btn btn-primary me-2" href="{{ path('app_register') }}">Créer un Compte</a>
+                    <a class="btn btn-secondary" href="{{ path('app_login') }}">Se Connecter</a>
+                </div>
+            {% elseif not app.user.isVerified %}
+                <div class="mt-4">
+                    <a class="btn btn-primary me-2" href="{{ path('app_account') }}">Mon Profil</a>
+                    <a class="btn btn-secondary" href="{{ path('app_logout') }}">Se Déconnecter</a>
+                </div>
+            {% else %}
+                <div class="mt-4 text-center">
+                    <a class="btn btn-primary me-2" href="{{ path('app_account') }}">Mon Profil</a>
+                    <a class="btn btn-secondary" href="{{ path('app_logout') }}">Se Déconnecter</a>
+                </div>
+            {% endif %}
+        </div>
+
+        <div class="row mt-5">
+            <div class="text-center">
+                <div class="col-12">
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe width="1000" height="200" src="https://www.youtube.com/embed/lcZDWo6hiuI"> </iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {% if app.user %}
+            {% if app.user.isVerified %}
+                <div class="mt-4">
+                    {# Barre de recherche #}
+                    <div class="mt-4">
+                        {% include 'components/_search_data.html.twig' with { form: form } only %}
+                    </div>
+                </div>
+            {% endif %}
+        {% endif %}
+
+        {# Affichage des vidéos #}
+        <div class="row video-container mt-4">
+            {% for video in videos %}
+                <div class="col-md-3 mb-4"> <!-- Utiliser col-md-4 pour trois colonnes sur grands écrans -->
+                    <div class="video-card" data-aos="flip-left" data-aos-easing="ease-out-cubic" data-aos-duration="2000">
+                        <div class="video-header">
+                            {% if video.isPremium %}
+                                <span class="premium-indicator" title="Premium Video">&#9733;</span> <!-- Étoile Unicode -->
+                            {% endif %}
+                        </div>
+                        <iframe class="video-frame" 
+                                src="{{ video.videoLink | replace({'watch?v=': 'embed/'}) }}" 
+                                frameborder="0" allowfullscreen>
+                        </iframe>
+                        <div width="300" height="200"  class="video-details">
+                            <h5 class="video-title">
+                                <a href="{{ path('app_video_show', {id: video.id, slug: video.title}) }}">
+                                    {{ video.title|slice(0, 20) ~ (video.title|length > 20 ? '...' : '') }}
+                                </a>
+                            </h5>
+                            <p class="video-description" style="color: white;">
+                                {{ video.description|slice(0, 50) ~ (video.description|length > 50 ? '...' : '') }}
+                            </p>
+                            <p class="video-date">{{'Submitted'| trans}}: {{ video.createdAt | date }}</p>
+                            {% if video.user %}
+                                <div class="d-flex align-items-center justify-content-between">
+                                    <div>
+                                        <p class="card-text">{{'By'| trans}}: {{ video.user.firstname }} {{ video.user.lastname }}</p>
+                                    </div>
+                                    <div>
+                                        {% if video.user.imageName %}
+                                            <img class="rounded-circle profile-image1" src="{{ vich_uploader_asset(video.user, 'imageFile') | imagine_filter('avatar_thumbnail') }}" alt="User Profile Image">
+                                        {% else %}
+                                            <img class="rounded-circle profile-image1" src="data:image/png;base64,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" alt="Default Profile">
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            {% else %}
+                                <p class="card-text">Creator information not available</p>
+                            {% endif %}
+                            <!-- Conditional buttons for editing and going back -->
+                            {% if app.user and app.user.isVerified and video.user and video.user.email == app.user.email %}
+                                <a class="bouton edit-btn" href="{{ path('app_video_edit', {id: video.id}) }}">Edit</a>
+                            {% endif %}
+                            <a class="bouton go-back-btn" href="{{ path('app_home') }}">Go Back</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+        {# Pagination #}
+        <div class="navigation flex justify-center mb-8">
+            {{ knp_pagination_render(videos) }}
+        </div>
+    </div>
+  
+{% endblock %}
+
+{% block stylesheets %}
+    <style>
+
+    
+        .profile-image {
+            max-width: 50px;
+            margin: 0 auto;
+        }
+        
+        .video-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .video-card {
+            position: relative;
+            background-color: transparent;
+            border: 1px;
+            border-radius: 0.5rem;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 300px; /* Largeur fixe */
+            height: 400px; /* Hauteur fixe */
+            margin: 10px;  /* Centrer la carte */
+            display: flex;
+            flex-direction: column; /* Pour centrer les éléments à l'intérieur */
+            justify-content: center;
+            align-items: center;
+        }
+
+        .video-frame {
+            width: 100%;
+            height: 200px;
+        }
+
+        .video-details {
+            padding: 0.5rem;
+        }
+
+        .video-title {
+            margin: 0;
+        }
+
+        .video-description {
+            margin: 0.5rem 0;
+        }
+
+        .video-date {
+            color: #777;
+        }
+
+        .premium-indicator {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            color: gold;
+            font-size: 1.5rem;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 50%;
+            padding: 0.2rem;
+            z-index: 10;
+        }
+
+        .bouton {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            margin: 0.5rem;
+            color: black;
+            text-decoration: none;
+            border-radius: 0.25rem;
+            border: 1px solid transparent;
+        }
+
+        .edit-btn {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+
+        .edit-btn:hover {
+            background-color: #0056b3;
+            border-color: #004085;
+        }
+
+        .go-back-btn {
+            background-color: transparent;
+            border-color: #6c757d;
+        }
+
+        .go-back-btn:hover {
+            background-color: transparent;
+            border-color: #4e555b;
+        }
+    </style>
+{% endblock %}

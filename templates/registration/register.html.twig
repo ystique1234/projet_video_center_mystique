@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'registerForm.titleOnglet'| trans}}{% endblock %}
+
+{% block body %}
+    {% for flash_error in app.flashes('verify_email_error') %}
+        <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+    {% endfor %}
+
+    <h1 class="text-center">{{ 'registerForm.title'| trans}}</h1>
+    <div class="d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+        <div class="w-50">
+
+    {{ form_errors(registrationForm) }}
+
+    {{ form_start(registrationForm , {'attr': {'novalidate': 'novalidate'}}) }}
+        {{form_row(registrationForm.firstname)}}
+        {{form_row(registrationForm.lastname)}}
+        {{ form_row(registrationForm.email) }}
+         {{ form_row(registrationForm.imageFile) }}
+        {{ form_row(registrationForm.plainPassword, {
+            label: 'Password'
+        }) }}
+        {{ form_row(registrationForm.agreeTerms) }}
+
+        <button type="submit" class="btn btn-primary">{% trans %}registerForm.submit{% endtrans %}</button>
+    {{ form_end(registrationForm) }}
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} #{{video.id ~" " ~ video.title}}{% endblock %}
+
+{% block body %}
+<div class = "row">
+        <div class= "col-md-6 mx-auto">
+    <h1 align = "center">{{ video.title|title }}</h1>
+    <br>
+    {# Attention, le form est la fonction fourni par symfony, et monForm c'est le nom qui vient de la méthode edit dans RecipeController #}
+    {# {{ form(monForm) }} #}
+    
+
+    {# Ici c'est une des manières de modifier l'agencement des formulaires en modifiant le label du bouton #}
+    {{ form_start(form)}}
+        {{ form_row(form.title) }}
+        {{ form_row(form.videoLink) }}
+        {{ form_row(form.description) }}
+    {{ form_end(form) }} 
+    </div>
+    </div>  
+{% endblock %}

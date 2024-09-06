@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Échec de l'abonnement{% endblock %}
+
+{% block body %}
+    <h1>Oops, quelque chose s'est mal passé</h1>
+    <p>{{ message }}</p>
+    <a href="{{ path('app_subscription') }}" class="btn btn-primary">Réessayer</a>
+{% endblock %}

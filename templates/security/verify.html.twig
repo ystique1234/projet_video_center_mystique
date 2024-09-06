@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Vérification du compte requise{% endblock %}
+
+{% block body %}
+    <div class="container mt-5">
+        <h1 class="mb-4">Vérification de votre compte requise</h1>
+
+        {% if app.user and not app.user.isVerified %}
+            <div class="alert alert-warning" role="alert">
+                Vous devez vérifier votre adresse e-mail avant de pouvoir accéder à certaines fonctionnalités de votre compte.
+            </div>
+
+            <p>Nous vous avons envoyé un e-mail contenant un lien de vérification. Veuillez consulter votre boîte de réception et cliquer sur le lien pour vérifier votre adresse e-mail.</p>
+            <p>Si vous n'avez pas reçu l'e-mail, vous pouvez <a href="{{ path('app_resend_verification_email') }}">demander un nouvel e-mail de vérification</a>.</p>
+        {% else %}
+            <p>Votre compte est déjà vérifié. Vous pouvez maintenant accéder à toutes les fonctionnalités du site.</p>
+        {% endif %}
+        
+        <a href="{{ path('app_home') }}" class="btn btn-primary mt-4">Retour à l'accueil</a>
+    </div>
+{% endblock %}

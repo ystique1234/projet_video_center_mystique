@@ -1,3 +1,184 @@
 body {
-    background-color: skyblue;
+    background-color: rgb(250, 234, 191);
+    background-image: url('/assets/premium_photo-1709484220277-4554c9a6a002.avif');
+    
 }
+
+
+.navbar {
+    border-bottom: 2px solid #f8f9fa; /* Bordure en bas de la navbar */
+    padding: 0.5rem 1rem; /* Padding pour un peu d'espace */
+    background-color: #343a40; /* Couleur de fond sombre pour la navbar */
+}
+
+.navbar-brand img {
+    border-radius: 5px; /* Bordures arrondies pour l'image du logo */
+    transition: transform 0.3s ease; /* Transition pour l'effet de survol */
+}
+
+.navbar-brand img:hover {
+    transform: scale(1.1); /* Effet de zoom au survol */
+}
+
+.navbar-nav {
+    display: flex;
+    width: 100%;
+}
+
+.navbar-nav .nav-link {
+    padding: 0.5rem 1rem; /* Padding pour les liens de navigation */
+    color: #ffffff; /* Couleur des liens */
+    transition: color 0.3s ease; /* Transition douce pour les couleurs */
+}
+
+.navbar-nav .nav-link:hover {
+    color: #ffcb05; /* Couleur des liens au survol */
+    text-decoration: underline; /* Souligner le texte au survol */
+}
+
+.navbar-nav .nav-link.active {
+    color: #ffcb05; /* Couleur des liens actifs */
+    font-weight: bold; /* Gras pour les éléments actifs */
+}
+
+.navbar-toggler {
+    border: none; /* Supprimer la bordure du bouton de menu */
+    background-color: #343a40; /* Couleur de fond pour le bouton de menu */
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;base64,..."); /* Personnaliser l'icône du bouton de menu */
+}
+
+/* Alignement des éléments dans la navbar */
+.navbar-nav.me-auto {
+    margin-right: auto; /* Aligne les éléments à gauche */
+}
+
+.navbar-nav.ms-auto {
+    margin-left: auto; /* Aligne les éléments à droite */
+}
+
+@media (max-width: 768px) {
+    .navbar-nav {
+        text-align: center; /* Centrer les éléments de menu sur les petits écrans */
+    }
+    .navbar-nav .nav-link {
+        padding: 0.5rem 0; /* Espacement vertical sur les petits écrans */
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        font-size: 12px;
+    }
+    .container {
+        padding: 5px;
+    }
+}
+
+/* Style pour les éléments qui ne doivent pas dépasser */
+.navbar-nav .nav-item {
+    flex-grow: 1; /* Assure que les éléments prennent l'espace disponible */
+}
+
+
+
+/* Style de l'image de profil pour qu'elle soit ronde */
+.profile-image-container {
+    display: flex;
+    justify-content: center; /* Centre l'image horizontalement */
+    align-items: center; /* Centre l'image verticalement */
+    margin-bottom: 1rem;
+}
+
+.profile-image {
+    border-radius: 50%; /* Rend l'image ronde */
+    max-width: 200px; /* Définit une largeur maximale pour l'image */
+    height: auto; /* Maintient le ratio d'aspect de l'image */
+}
+
+/* Assure que les vidéos sont dans un cadre avec bordures arrondies */
+iframe {
+    border-radius: 0.5rem; /* Bordures arrondies pour les vidéos */
+}
+
+
+
+
+/* Conteneur de pagination */
+.navigation {
+    margin-top: 2rem; /* Espace au-dessus du conteneur de pagination */
+    margin-bottom: 2rem; /* Espace en-dessous du conteneur de pagination */
+}
+
+/* Styles des éléments de pagination */
+.pagination {
+    display: flex;
+    justify-content: center; /* Centre les éléments de pagination horizontalement */
+    list-style: none; /* Supprime les puces des éléments de liste */
+    padding: 0;
+    margin: 0;
+}
+
+.pagination li {
+    margin: 0 0.25rem; /* Espace entre les éléments de pagination */
+}
+
+.pagination a, .pagination span {
+    display: inline-block;
+    padding: 0.5rem 1rem; /* Padding autour des liens */
+    border-radius: 0.25rem; /* Bordures arrondies pour les liens */
+    border: 1px solid #dee2e6; /* Bordure légère autour des liens */
+    text-decoration: none; /* Supprime le soulignement des liens */
+    color: #007bff; /* Couleur du texte des liens */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Transitions pour les changements de couleur */
+}
+
+.pagination a:hover, .pagination span.active {
+    background-color: #007bff; /* Couleur de fond au survol ou pour les éléments actifs */
+    color: #fff; /* Couleur du texte pour les éléments actifs */
+    border-color: #007bff; /* Couleur de la bordure pour les éléments actifs */
+}
+
+.pagination .disabled {
+    color: #6c757d; /* Couleur du texte pour les éléments désactivés */
+    cursor: not-allowed; /* Curseur pour les éléments désactivés */
+}
+
+.pagination .disabled a {
+    pointer-events: none; /* Désactive les clics pour les éléments désactivés */
+}
+
+
+.profile-image1 {
+    max-width: 20px;
+    height: 20px;
+    object-fit: cover; /* Assure que l'image s'adapte bien à la forme ronde */
+    border-radius: 50%; /* Rend l'image ronde */
+    margin-left: auto; /* Aligne l'image à droite */
+}
+
+.alert {
+    padding: 10px;
+    color: white;
+    text-align: center;
+}
+  
+.alert-success {
+    background-color: green;
+}
+  
+.alert-error {
+    background-color: red;
+}
+  
+.alert-info {
+    background-color: blue;
+}
+
+
+
+
+
+

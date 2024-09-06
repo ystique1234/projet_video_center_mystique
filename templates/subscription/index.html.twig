@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Abonnement Premium{% endblock %}
+
+{% block body %}
+    <h1>Devenez membre Premium</h1>
+    <p>Pour accéder à des vidéos exclusives, veuillez souscrire à un abonnement premium.</p>
+    <a href="{{ path('app_subscription_subscribe') }}" class="btn btn-primary">Souscrire</a>
+{% endblock %}

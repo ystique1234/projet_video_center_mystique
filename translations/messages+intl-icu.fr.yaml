@@ -1,0 +1,42 @@
+'Account successfuly updated !': 'Compte mis à jour avec succès !'
+'You must confirm your email to create Vidéo!': 'Vous devez confirmer votre email pour créer Vidéo!'
+'You must login to create Video !': 'Vous devez vous connecter pour créer une vidéo !'
+'You must confirm your email to edit Video !': 'Vous devez confirmer votre email pour éditer la vidéo !'
+'You must login to edit Video !': 'Vous devez vous connecter pour éditer la vidéo !'
+'Update Profile': 'Mettre à jour le profil'
+'Apply changes': 'Appliquer les modifications'
+acountShow.profile: 'Mon Compte'
+accountShow.AccountCreatedat: 'Creation de mon compte'
+accountShow.EditAccount: 'Editer mon compte'
+'ajouter une vidéo': 'Creer une vidéo'
+registerForm.titleOnglet: Inscription
+registerForm.title: Inscription
+'Forgot Password?': 'Mon de passe oublié?'
+'Not registred yet?': 'pas encore inscrit?'
+'Create an account': 'Créer un Compte'
+registerForm.firstname: Prénom
+registerForm.lastname: Nom
+registerForm.email: 'Adresse éléctronique'
+Password: 'Mot de passe'
+registerForm.agreeTerms: 'Accepter les termes'
+registerForm.submit: "S'enregistrer"
+'You must login to delete Vidéo !': 'Vous devez vous connecter pour supprimer Vidéo !'
+Submitted: ' publiée'
+By: ' par '
+navBar.video: 'Listes des vidéos'
+navBar.aadVideo: 'Créer une vidéo'
+navBar.account: 'Mon Compte'
+navBar.logout: 'Se deconnecter'
+navBar.signUp: "S'enregistrer"
+navBar.login: 'Se loguer'
+videoForm.title: Titre
+videoForm.description: Description
+videoFom.save: Envoyer
+accountShow.profile: 'Mon Profil'
+'Please sign in': 'Se connecter'
+'You must be logged in to view the video.': 'Vous devez être connecté pour voir la vidéo.'
+'Please verify your account to access premium content.': 'Veuillez vérifier votre compte pour accéder au contenu premium.'
+'The video has been modified': 'La vidéo a été modifiée'
+'Already Connected': 'Already Connected'
+'Already Connected !': 'Already Connected !'
+'Your email address has been verified.': 'Votre adresse e-mail a été vérifiée.'

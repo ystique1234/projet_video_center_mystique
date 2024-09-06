@@ -1,0 +1,33 @@
+<nav class= "navbar navbar-expand-md navbar-dark bg-dark">
+            <div class = "container-fluid">
+             <a class="navbar-brand" href={{ path('app_home') }}><img src= "https://cfitech.be/wp-content/uploads/2024/06/LOGO-CFITECH-2020-POUR-LE-BUREAU-e1711315800164.png" width="130" height="60"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+            <ul class = "navbar-nav me-auto">
+            <li class = 'nav-item'>
+            <a class = "nav-link {{ app.current_route starts with 'app_video_' ? 'active' : '' }}" href={{ path('app_home') }}></a>
+            </li>
+             {% if app.user %}
+             {% if app.user.isVerified %}
+           <li class="nav-item ">
+             <a class="nav-link {{ app.current_route == 'app_video_create' ? 'active' : '' }}" href={{ path('app_video_create') }}>{% trans %}navBar.aadVideo{% endtrans %}</a>
+           </li>
+           {% endif %}
+            <li class="nav-item ">
+             <a class="nav-link {{ app.current_route == 'app_account' ? 'active' : '' }}" href={{path('app_account')}}>{% trans %}navBar.account{% endtrans %}</a>
+           </li>
+           <li class="nav-item ">
+             <a class="nav-link" href={{path('app_logout')}} >{% trans %}navBar.logout{% endtrans %}</a>
+           </li>
+           {% else %}
+            <li class="nav-item ">
+             <a class="nav-link {{ app.current_route == 'app_register' ? 'active' : '' }}" href= {{path('app_register')}} >{% trans %}navBar.signUp{% endtrans %}</a>
+           </li>
+            <li class="nav-item ">
+             <a class="nav-link {{ app.current_route == 'app_login' ? 'active' : '' }}" href={{path('app_login')}}>{% trans %}navBar.login{% endtrans %}</a>
+           </li>
+           {% endif %}
+            </ul> 
+            </div>
+        </nav>
